@@ -14,7 +14,6 @@ export function addToCart(productInfo, id, quantity) {
     } else {
         cart.push(productInfo);
     }
-    console.log(cart)
 }
 
 export function updateCartQuantity() {
