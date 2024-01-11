@@ -1,4 +1,8 @@
-export const cart = [];
+export const cart = JSON.parse(localStorage.getItem('cart'));
+
+if (!cart) {
+    cart = [];
+}
 
 export function addToCart(productInfo, id, quantity) {
     let matchingItem;
