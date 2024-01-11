@@ -1,3 +1,6 @@
+import {cart} from '../data/cart.js';
+import {products} from '../data/products.js';
+
 window.onload = () => {
     const productsGrid = document.querySelector(".products-grid");
     
@@ -55,6 +58,8 @@ window.onload = () => {
 
     const addToCartButtons = document.querySelectorAll(".add-to-cart-button");
 
+    const addedMessageTimeout = {};
+
     addToCartButtons.forEach(button => {
         button.addEventListener("click", () => {
             const product = button.parentElement;
@@ -93,6 +98,22 @@ window.onload = () => {
             })
 
             document.querySelector(".cart-quantity").innerText = totalQuantity;
-        })
+
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            const addedMessage = product.querySelector('.added-to-cart');
+
+            addedMessage.style.opacity = '1';
+
+            setTimeout(()=>{
+                if (addedMessageTimeout[id]) {
+                  clearTimeout(addedMessageTimeout[id]);      
+                }
+
+                addedMessageTimeout[id] = setTimeout(() => {
+                    addedMessage.style.opacity = '0';
+                }, 2000);
+            })
+        });
     })
 }

@@ -1,4 +1,4 @@
-const products = [
+export const products = [
   {
     id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
     image: "images/products/athletic-cotton-socks-6-pairs.jpg",
@@ -655,6 +655,36 @@ const products = [
       "hoodies",
       "apparel",
       "mens"
+    ]
+  },
+  {
+    id: "0d7f9afa-2efe-4fd9-b0fd-ba5663e0a525",
+    image: "images/products/backpack.jpg",
+    name: "Lightweight Casual Laptop Backpack with USB Charging Port For for Men and Women, Daily use backpack, Backpack for College (Full Black)",
+    rating: {
+      stars: 4.5,
+      count: 1211
+    },
+    priceCents: 2250,
+    keywords: [
+      "bag",
+      "school",
+      "backpack"
+    ]
+  },
+  {
+    id: "0d7f9afa-2efe-4fd9-b0fc-ba5669e0a526",
+    image: "images/products/umbrella.jpg",
+    name: "Amazon Basics Automatic Small Compact Travel Umbrella, One Size, Green",
+    rating: {
+      stars: 4.5,
+      count: 1011
+    },
+    priceCents: 2145,
+    keywords: [
+      "umbrella",
+      "rain",
+      "appliances"
     ]
   }
 ];
