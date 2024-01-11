@@ -1,4 +1,5 @@
 import {cart} from '../data/cart.js';
+import {updateCartQuantity, addToCart, displayAddedMessage} from '../data/cart.js';
 import {products} from '../data/products.js';
 
 window.onload = () => {
@@ -77,43 +78,15 @@ window.onload = () => {
                 priceCents: priceInCents
             }
 
-            let matchingItem;
+            addToCart(productInfo, id, quantity);
 
-            cart.forEach(item => {
-                if (item.id === id) {
-                    matchingItem = item;
-                }
-            })
-
-            if (matchingItem) {
-                matchingItem.quantity += quantity;             
-            } else {
-                cart.push(productInfo);
-            }
-
-            let totalQuantity = 0;
-
-            cart.forEach(item => {
-                totalQuantity += item.quantity;
-            })
-
-            document.querySelector(".cart-quantity").innerText = totalQuantity;
+            updateCartQuantity();
 
             localStorage.setItem('cart', JSON.stringify(cart));
 
             const addedMessage = product.querySelector('.added-to-cart');
 
-            addedMessage.style.opacity = '1';
-
-            setTimeout(()=>{
-                if (addedMessageTimeout[id]) {
-                  clearTimeout(addedMessageTimeout[id]);      
-                }
-
-                addedMessageTimeout[id] = setTimeout(() => {
-                    addedMessage.style.opacity = '0';
-                }, 2000);
-            })
+            displayAddedMessage(addedMessage, addedMessageTimeout, id);
         });
     })
 }
